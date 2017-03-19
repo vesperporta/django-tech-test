@@ -31,12 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
+    'loans',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +85,11 @@ DATABASES = {
 }
 
 
+AUTHENTICATION_BACKENDS = (
+    'registration.backends.default'
+)
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -100,3 +108,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+INCLUDE_AUTH_URLS = True
+LOGIN_REDIRECT_URL = '/loans/'
+LOGIN_URL = '/accounts/login/'
